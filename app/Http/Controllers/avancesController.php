@@ -22,14 +22,27 @@ class avancesController extends Controller
 
     public function index()
     {
-        return auth()->user();
         // auth()->user(); Es un objeto que contiene todo los datos del usuario
-        $usuarioEmail= auth()->user()->email;
+        //return auth()->user();
 
-        //almacena solo el usuarion donde sea igual el usuarioEmail "filtro"
-        $productos= App\Models\Product::where('usuario', auth()->user()->email)->paginate(5);
-        return view('notas.lista', compact('productos'));
+        //retorna toda la tabla product, tomado del model Product
+        $productoMostrado = Product::all();
+        return $productoMostrado;
+        //$id=1;
+        //$nota = App\Models\Product::findOrFail($id);
+        //return view('productos.lista', compact('nota'));
+        //return view('productos.lista');
+
     }
+
+  /*   public function lista($productId){
+        $producto = App\Models\Product::findOrFail($productId);
+        return view('productos.lista', compact('producto'));
+    } */
+   /*  public function lista($id){
+        return Product::findOrFail($id);
+    } */
+
 
     /**
      * Show the form for creating a new resource.
@@ -38,7 +51,7 @@ class avancesController extends Controller
      */
     public function create()
     {
-        //
+        //return view('productos.crear');
     }
 
     /**
@@ -60,7 +73,16 @@ class avancesController extends Controller
      */
     public function show($id)
     {
-        //
+        $unProducto= Product::findOrFail($id);
+        //return $unProducto;
+        return view('productos.detalleProducto', compact('unProducto'));
+    }
+
+    public function todosProductos()
+    {
+        $todosProductos= Product::Paginate(15);
+        //return $unProducto;
+        return view('productos.lista', compact('todosProductos'));
     }
 
     /**
