@@ -16,7 +16,7 @@ use App\Http\Controllers\avancesController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::resource('product', avancesController::class);

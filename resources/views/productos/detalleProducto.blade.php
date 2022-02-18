@@ -1,7 +1,7 @@
 @extends('plantilla')
 
 @section('seccion')
-    <h1>Detalle de un producto</h1>
+    <h1>Detalle de un producto {{ $unProducto->productName }}</h1>
 
     <table class="table">
         <thead>
@@ -13,17 +13,16 @@
             </tr>
         </thead>
         <tbody>
-            {{ $unProducto->productId }}
-                <tr>
-                    <th scope="row">{{ $unProducto->productId }}</th>
-                    <td>
-                        
-                            {{ $unProducto->productName }}
-                        
-                    </td>
-                    <td>{{ $unProducto->categoryId }}</td>
-                    
-                </tr>
+            <tr>
+                <th scope="row">{{ $unProducto->productId }}</th>
+                <td>
+
+                    {{ $unProducto->productName }}
+
+                </td>
+                <td>{{ $unProducto->categoryId }}</td>
+
+            </tr>
         </tbody>
 
 

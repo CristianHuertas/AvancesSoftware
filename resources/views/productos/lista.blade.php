@@ -35,5 +35,5 @@
 
     </table>
 
-    {{$notas->links()}}
+    {{$todosProductos->links()}}
 @endsection
