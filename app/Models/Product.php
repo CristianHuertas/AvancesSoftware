@@ -11,5 +11,12 @@ class Product extends Model
 
     protected $table = 'product';
     protected $primaryKey = 'productId';
+
+
+    // me sirve para hacer la relacion entre productos y su categoria
+    public function categorias(){
+        return $this->hasMany('App\Models\Category','categoryId', 'productId');
+    }
+
     
 }

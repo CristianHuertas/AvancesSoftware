@@ -19,16 +19,27 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::resource('product', avancesController::class);
+/* Route::resource('compras', ComprasController::class);
+Route::resource('compra', ComprasController::class);
+Route::resource('customer', ComprasController::class);
+Route::resource('compras', 'ComprasController'); */
+//Route::resource('customer', 'ComprasController');
 
-/* Route::resources([
-    'product' => 'App\Http\Controllers\avancesController',
-    'posts' => 'App\Http\Controllers\avancesController'
-]); */
+
+ Route::resources([
+    'compras' => 'App\Http\Controllers\ComprasController',
+    'posts' => 'App\Http\Controllers\ComprasController'
+]); 
 
 //route::get('/lista/{productId}', 'App\Http\Controllers\avancesController@lista')->name('productos.lista');
 route::get('/lista', 'App\Http\Controllers\avancesController@todosProductos')->name('productos.lista');
+route::get('/detalle/categoria/{id}', 'App\Http\Controllers\avancesController@buscarCategoria')->name('productos.categoria');
+
+//route::get('/lista', 'App\Http\Controllers\avancesController@selectorCategoria')->name('productos.lista');
 route::get('/detalle/{id}', 'App\Http\Controllers\avancesController@show')->name('productos.detalle');
+
+
+
 
 
 

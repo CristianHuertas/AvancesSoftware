@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Customer;
+
 use App\Models;
+use Illuminate\Database\Eloquent\Collection;
 
 
 class avancesController extends Controller
@@ -24,24 +28,16 @@ class avancesController extends Controller
     {
         // auth()->user(); Es un objeto que contiene todo los datos del usuario
         //return auth()->user();
+        $productoMostrado = Product::with('categorias')->paginate();
 
         //retorna toda la tabla product, tomado del model Product
-        $productoMostrado = Product::all();
+        //$productoMostrado = Product::all();
         return $productoMostrado;
-        //$id=1;
-        //$nota = App\Models\Product::findOrFail($id);
-        //return view('productos.lista', compact('nota'));
-        //return view('productos.lista');
+       
 
     }
 
-  /*   public function lista($productId){
-        $producto = App\Models\Product::findOrFail($productId);
-        return view('productos.lista', compact('producto'));
-    } */
-   /*  public function lista($id){
-        return Product::findOrFail($id);
-    } */
+ 
 
 
     /**
@@ -78,13 +74,39 @@ class avancesController extends Controller
         return view('productos.detalleProducto', compact('unProducto'));
     }
 
-    public function todosProductos()
+    public function buscarCategoria($id)
     {
-        $todosProductos= Product::Paginate(15);
+        $claseProducto= Category::findOrFail($id);
         //return $unProducto;
-        return view('productos.lista', compact('todosProductos'));
+        return view('productos.lista', compact('claseProducto'));
     }
 
+    public function todosProductos()
+    {
+        $todosProductos = Product::with('categorias')->paginate(20);
+
+        //$todosProductos= Product::Paginate(20);
+        $categoriaUnica= Category::all();
+        $proveedorUnico= Models\Supplier::all();
+
+        //return $unProducto;
+        return view('productos.lista', compact('todosProductos', 'categoriaUnica', 'proveedorUnico'));
+    }
+
+    public function compras(){
+        return view('compras.index');
+    }
+
+
+   /*  public function comprasEmpresa(Request $request)
+    {
+
+        $buscarpor = $request->get('buscarpor');
+        $comprasEmpresa= Customer::where('companyName', 'like', '%'.$buscarpor.'$');
+        //return $unProducto;
+        return view('compras.saleOrder', compact('comprasEmpresa', 'buscarpor'));
+    } */
+   
     /**
      * Show the form for editing the specified resource.
      *
