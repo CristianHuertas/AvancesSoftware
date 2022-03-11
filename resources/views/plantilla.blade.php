@@ -60,7 +60,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{{ route('compras.create') }}">Crear Empresa</a></li>
-                <li><a class="dropdown-item" href="{{ route('ordenes.create') }}">Crear Orden</a></li>
+                <li><a class="dropdown-item" href="{{ route('ordenes.index') }}">Crear Orden</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>

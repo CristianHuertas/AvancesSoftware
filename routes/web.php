@@ -38,6 +38,10 @@ route::get('/detalle/categoria/{id}', 'App\Http\Controllers\avancesController@bu
 //route::get('/lista', 'App\Http\Controllers\avancesController@selectorCategoria')->name('productos.lista');
 route::get('/detalle/{id}', 'App\Http\Controllers\avancesController@show')->name('productos.detalle');
 
+Route::resources([
+    'ordenes' => 'App\Http\Controllers\OrdenesController',
+    'posts' => 'App\Http\Controllers\OrdenesController'
+]); 
 
 
 
