@@ -12,7 +12,7 @@
                     style="background-color: lightgrey ; margin-right: 25%; margin-left: 25%; padding: 1%; align-content: center">
                     {{-- <form action="{{ route('compras.crearEmpresa')}}" method="POST"> --}}
                     <form action="{{ route('compras.store')}}" method="POST">
-
+                        @csrf
                         {{-- token para evitar que envien formularios desde otra web --}}
                         @csrf
 

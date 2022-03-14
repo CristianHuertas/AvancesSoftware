@@ -15,7 +15,7 @@
 
                     {{-- <form action="{{ route('ordenes.create') }}" > --}}
                     <form action="">
-
+                        @csrf
                         {{-- token para evitar que envien formularios desde otra web --}}
                         @csrf
 
